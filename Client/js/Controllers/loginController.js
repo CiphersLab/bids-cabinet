@@ -12,7 +12,7 @@ myApp.controller('loginController',function($scope,$facebook,$state){
             function(response) {
                 $scope.welcomeMsg = "Welcome " + response.name;
                 $scope.isLoggedIn = true;
-                $state.go('ionBarStripped')
+                $state.go('ionBarStripped.yourTeam')
             },
             function(err) {
                 $scope.welcomeMsg = "Please log in";

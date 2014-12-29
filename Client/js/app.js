@@ -47,35 +47,33 @@ myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider) {
     $facebookProvider.setVersion("v2.2");
 
 
-    $urlRouterProvider.otherwise('/');
+
 
     $stateProvider.state('home', {
         url: '/',
-        views: {
-            home: {
-                templateUrl: 'templates/home.html',
-                controller:'loginController'
-            }
-        }
+        templateUrl: 'templates/home.html',
+        controller:'loginController'
+
+
+
+
     })
 
-        .state('help', {
+       /*.state('help', {
             url: '/help',
             views: {
                 help: {
                     templateUrl: ''
                 }
             }
-        })
+        })*/
 
         .state('ionBarStripped',{
-
-
-            /*abstract:true,*/
+            abstract:true,
             templateUrl:"templates/ionBarStriped.html"
         })
 
-        .state('ionBarStripped.yourTeam',{
+     .state('ionBarStripped.yourTeam',{
 
 
             url:'/yourTeam',
@@ -91,7 +89,7 @@ myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider) {
             }
 
         })
-
+    /*
         .state('ionBarStripped.createTeam',{
             url:'/createTeamTab',
             views:{
@@ -143,7 +141,7 @@ myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider) {
             controller: 'teamController'
 
         });
-
+*/
 
 
 
