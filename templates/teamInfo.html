@@ -1,0 +1,104 @@
+
+    <div class="modal modalBackground">
+        <ion-header-bar class="bar bar-positive">
+
+            <div class="row">
+                <div class="col col-10 groupInfoImg">
+                    <img ng-src="img/facebookLogo.png"/>
+                </div>
+                <div class="col col-80">
+                    <h3 class="groupInfo">Group Name</h3>
+                </div>
+                <div class="col col-10">
+                    <div class="buttons">
+                        <button class="button button-clear icon ion-close" style="color: #000000;" ng-click="closeModal()"></button>
+                    </div>
+                </div>
+
+            </div>
+        </ion-header-bar>
+        <ion-content>
+
+
+
+            <div class="row teamInfo">
+
+
+                <div class="col col-80">
+                    <p class="">Team's Description:</p>
+                </div>
+                <div class="col" ng-click="showPopup()">
+
+                    <i class="ion-ios-people"></i>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                </div>
+            </div>
+
+
+            <div class="row">
+
+                <div class="col col-40 col-offset-10 teamInfoMember">
+                    <p class="">Projects:</p>
+                </div>
+                <div class="col col-20">
+                    <p class="">Bids:</p>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div id="teamMemberList" class="col">
+
+                    <!--27th Dec, 2014
+                    Here we will bring the data from Server and Database to show members of specific Team.
+                    Just for checking it is a dummy data-->
+
+
+                    <div class="row teamProjects">
+                        <div class="col col-10 memberList"><p>1</p></div>
+
+                        <span class="col col-80"><p>Javascript API</p></span>
+                        <span class="col col-10"><p>5</p></span>
+
+
+                    </div>
+                    <br>
+                    <div class="row teamProjectsDark">
+                        <div class="col col-10 memberListMore"><p>2</p></div>
+                        <span class="col col-80"><p>Javascript extension</p></span>
+                        <span class="col col-10"><p>10</p></span>
+                    </div>
+                    <br>
+                    <div class="row teamProjects">
+                        <div class="col col-10 memberList"><p>3</p></div>
+                        <span class="col col-80"><p>CMS System</p></span>
+                        <span class="col col-10"><p>15</p></span>
+                    </div>
+                    <br>
+                    <div class="row teamProjectsDark">
+                        <div class="col col-10 memberListMore"><p>4</p></div>
+                        <span class="col col-80"><p>Javascript Long Term Project</p></span>
+                        <span class="col col-10"><p>25</p></span>
+                    </div>
+                    <br>
+
+
+
+                </div>
+            </div>
+
+
+        </ion-content>
+    </div>
+
+
+
+

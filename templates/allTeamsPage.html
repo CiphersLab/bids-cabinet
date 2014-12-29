@@ -1,0 +1,42 @@
+
+
+    <ion-view view-title="All Teams" class="tabsListFont">
+        <ion-content class="padding allTeamsPageBackground">
+            <p>
+
+
+            <div class="row">
+
+
+
+                <div class="col col-offset-20">
+                    <b class="tabHeading">Name</b>
+
+                </div>
+
+                <div class="col">
+                    <b class="tabHeading">Members</b>
+                </div>
+
+            </div>
+            </p>
+            <div ng-repeat="allTeams in allTeamData">
+                <div class="row tabsList">
+
+                    <div class="col col-10">
+                        <img ng-src="img/{{allTeams.teamImage}}"/>
+
+                    </div>
+
+                    <div class="col col-66 col-offset-10">
+                        {{allTeams.teamName}}
+
+                    </div>
+                    <div class="col col-20">
+                        {{allTeams.teamMembers}}
+                    </div>
+                </div>
+
+            </div>
+        </ion-content>
+    </ion-view>

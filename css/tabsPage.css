@@ -1,0 +1,226 @@
+html,body{
+    font-family: cursive;
+}
+
+.allTeamsPageBackground{
+
+
+    background: url("../img/backgroundImage6.jpg") no-repeat fixed center;
+
+
+}
+.yourTeamsPageBackground{
+
+
+    background: url("../img/backgroundImage3.png") no-repeat fixed center;
+
+
+}
+.tabsList{
+
+    border-bottom: #000000 1px outset;
+
+    padding-top: 08px;
+    padding-bottom: 02px;
+    margin-top: 18px;
+    background-color: rgb(201, 203, 211);
+    opacity: 0.9;
+    height: 60px;
+    border-radius: 25px;
+
+}
+.tabsListFont{
+
+    font-family: cursive;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.tabsList > div > img
+{
+
+    width: 40px;
+    height: 40px;
+}
+
+.tabHeading{
+
+    font-size: 20px;
+    font-family: cursive;
+}
+
+.barFont{
+    border-color: rgba(230, 231, 226, 0.98);
+    background-color: rgb(201, 203, 211);
+    background-image: linear-gradient(0deg, #0c63ee, #0c63ee 50%, transparent 50%);
+    color: #404040;
+
+    font-family: Georgia;
+
+
+}
+
+.imageUpload{
+    border-radius: 15px;
+    border: #000000 dashed 1px;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+
+}
+
+.imageUpload > p
+{
+    margin-top: 25%;
+    text-align: center;
+
+}
+.imageUpload > i
+{
+    font-size: 25px;
+
+}
+
+.teamNameLabel{
+
+    border: none;
+
+
+
+}
+.teamNameLabel > input
+{
+    border-bottom: thin solid gray;
+}
+
+.teamNameLabel > textarea
+{
+    border: thin solid gray;
+
+    border-radius: 5px;
+}
+
+.createTeamName> p{
+
+    margin-left: 15px;
+    margin-top: 25%;
+}
+
+.createTeamDesc> p{
+
+
+}
+.createTeamMembers> p{
+
+
+}
+#addTeamMember{
+    font-size: 30px;
+}
+
+.membersCount{
+    border: #366ed3 solid 2px;
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+}
+.membersCount ~ div > i{
+
+    font-size: 30px;
+}
+
+.groupInfo{
+    font-family: cursive;
+    text-align: center;
+
+
+}
+
+.groupInfoImg > img
+
+    {
+    width: 40px;
+    height: 40px;
+
+}
+.modalBackground{
+
+/*
+    background: url("../img/modalBackground1.jpg") no-repeat fixed center;
+*/
+
+}
+.modalBackground > ion-header-bar{
+    margin-top: 20px;
+    height: 60px;
+    opacity: 0.8;
+    font-weight: bold;
+
+
+}
+.teamInfo{
+    margin-top: 60px;
+
+
+}
+.teamInfo > div >  p{
+    font-weight: bold;
+    font-size: 15px;
+}
+.teamInfo > div ~ div > i{
+font-size: 35px;
+
+
+}
+.teamInfoMember > p{
+    font-weight: bold;
+    font-size: 15px;
+}
+.teamInfoMember ~ div{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+.memberList{
+
+    border: #366ed3 solid 2px;
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+
+
+
+}
+
+.memberListMore{
+
+    border: #242423 solid 2px;
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+
+
+
+}
+.memberList > p{
+    margin-top: 5px;
+}
+.teamProjects{
+    border-color: rgba(230, 231, 226, 0.98);
+    background-color: rgba(201, 203, 211, 0.49);
+
+}
+.teamProjectsDark{
+    border-color: rgba(230, 231, 226, 0.98);
+    background-color: rgba(102, 103, 107, 0.56);
+
+}
+.memberNamesDisplay{
+    border-color: rgba(241, 241, 236, 0.98);
+    background-color: rgba(234, 237, 245, 0.25);
+
+}

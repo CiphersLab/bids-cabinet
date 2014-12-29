@@ -1,0 +1,50 @@
+html,body{
+
+    text-align: center;
+
+}
+
+.background {
+   background: url("../img/backgroundImage4.png") no-repeat fixed center;
+
+}
+
+.facebookLogin{
+
+    text-align: center;
+    margin-top: 40%;
+
+}
+.facebookLogin>img
+{
+    width: 80px;
+    height: 80px;
+
+}
+.facebookLogin>button>h4
+{
+color: #ffffff;
+    font-family: cursive;
+}
+.facebookLogin>button{
+
+    opacity: 0.9;
+}
+
+.takeTour{
+
+    margin-top: 40%;
+
+
+}
+.takeTour>b{
+    color: #ffffff;
+    font-family: cursive;
+
+}
+.my-button-positive{
+    border-color: #0c63ee;
+    background-color: #2858b0;
+    color: #9f9f9f;
+}
+
