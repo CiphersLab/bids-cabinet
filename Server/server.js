@@ -8,7 +8,15 @@ var methodOverride=require('method-override');
 var Schemas=require('./Schemas/Schemas.js');
 var Api=require('./Schemas/Api.js');
 
+app.use(function(req, res, next) {
 
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("'Access-Control-Allow-Methods',['OPTIONS', 'GET', 'POST']");
+    res.header("'Access-Control-Allow-Headers','Content-Type'");
+
+    next();
+});
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,4 +31,4 @@ app.post('/api/joinGroup',Api.joinGroup);
 
 
 app.listen(port);
-console.log('server is listening on 8080');
+console.log('server is listening on 8000');

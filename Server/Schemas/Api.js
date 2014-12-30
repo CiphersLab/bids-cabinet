@@ -10,11 +10,11 @@ module.exports.addUser=function(req,res){
 
     var userData=req.body;
     var allGroupsData=[];
-    Groups.find(function(error,date){
-        if(error)
-            res.send(error)
+    Groups.find(function(err,data){
+        if(err)
+            res.send(err)
         else
-            allGroupsData.push(date);
+            allGroupsData.push(data);
 
     })
 

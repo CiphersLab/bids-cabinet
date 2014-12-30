@@ -1,6 +1,9 @@
 
-myApp.controller('createTeam',function($scope){
+myApp.controller('createTeam',function($scope,$http,$rootScope){
     $scope.newMemberName="";
+    $scope.groupName='';
+    $scope.groupDesc='';
+
 
     $scope.allMembers=[{
 
@@ -27,6 +30,19 @@ myApp.controller('createTeam',function($scope){
 
     };
 
+    $scope.createGroup=function(){
+//alert($scope.groupName);
+        $http.post('http://localhost:8000/api/addGroup',{groupName:$scope.groupName,groupData:$scope.groupDesc,userTitle: $rootScope.userName}).success(
+            function(err,data){
+                if(err)
+                    console.log(err);
+                else
+                    console.log(data);
+
+            }
+        )
+
+    }
 
 
 

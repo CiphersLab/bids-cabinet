@@ -41,8 +41,13 @@ myApp.run(['$rootScope', '$window',function($ionicPlatform,$rootScope) {
 
 }]);
 
-myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider) {
+myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider,$httpProvider) {
 
+    $httpProvider.defaults.useXDomain = true;
+
+    //Remove the header containing XMLHttpRequest used to identify ajax call
+    //that would prevent CORS from working
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $facebookProvider.setAppId('778214432215760');
     $facebookProvider.setVersion("v2.2");
 
