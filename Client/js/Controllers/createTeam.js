@@ -1,5 +1,7 @@
 
-myApp.controller('createTeam',function($scope,$http,$rootScope){
+myApp.controller('createTeam',function($scope,$http,$rootScope,$state,appData){
+    $rootScope.myCreatedTeam=appData.getTeamData()[0];
+
     $scope.newMemberName="";
     $scope.groupName='';
     $scope.groupDesc='';
@@ -32,15 +34,24 @@ myApp.controller('createTeam',function($scope,$http,$rootScope){
 
     $scope.createGroup=function(){
 //alert($scope.groupName);
+
         $http.post('http://localhost:8000/api/addGroup',{groupName:$scope.groupName,groupData:$scope.groupDesc,userTitle: $rootScope.userName}).success(
-            function(err,data){
-                if(err)
-                    console.log(err);
-                else
+            function(data){
+
+
+
+                    $rootScope.allTeamData.push(data);
+                    alert($rootScope.myCreatedTeam[0]);
                     console.log(data);
+
+
+
 
             }
         )
+        $state.go('ionBarStripped.yourTeam');
+
+
 
     }
 

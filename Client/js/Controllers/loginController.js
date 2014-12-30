@@ -25,6 +25,7 @@ $rootScope.userName='';
                             console.log(data)
                         }
                         $rootScope.userName=response.name;
+
                     }
                 )
             },

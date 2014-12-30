@@ -1,6 +1,7 @@
-myApp.controller('yourTeamController', function($scope,$ionicModal, $ionicPopup, $timeout, appData) {
+myApp.controller('yourTeamController', function($scope,$ionicModal, $ionicPopup, $timeout, appData,$rootScope) {
 
-    $scope.allTeamData=appData.getTeamData()[0];
+    $rootScope.allTeamData=[];
+
 
    $ionicModal.fromTemplateUrl('templates/teamInfo.html', {
         scope: $scope

@@ -30,18 +30,18 @@
             <div ng-repeat="createdTeams in allTeamData">
                 <div class="row tabsList" ng-click="openModal(myTeams)">
 
-                    <div class="col col-10">
+                   <!-- <div class="col col-10">
                         <img ng-src="img/{{createdTeams.teamImage}}"/>
 
-                    </div>
+                    </div>-->
 
                     <div class="col col-66 col-offset-10">
-                        {{createdTeams.teamName}}
+                        {{createdTeams.groupTitle}}
 
                     </div>
-                    <div class="col col-20">
+                    <!--div class="col col-20">
                         {{createdTeams.teamMembers}}
-                    </div>
+                    </div-->
 
                 </div>
             </div>
