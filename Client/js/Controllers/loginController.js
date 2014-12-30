@@ -6,7 +6,8 @@ myApp.controller('loginController',function($scope,$facebook,$state){
         $facebook.login().then(function() {
             refresh();
         });
-    }
+    };
+
     function refresh() {
         $facebook.api("/me").then(
             function(response) {

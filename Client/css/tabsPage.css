@@ -146,9 +146,8 @@ html,body{
 }
 .modalBackground{
 
-/*
+
     background: url("../img/modalBackground1.jpg") no-repeat fixed center;
-*/
 
 }
 .modalBackground > ion-header-bar{
