@@ -44,7 +44,8 @@ myApp.controller('loginController',function($scope,$facebook,$state,$http,$rootS
                 )
                     .error(function(data){
                         $rootScope.userName=response.name;
-                    })
+                    });
+
                 $http.get('http://localhost:8000/api/findGroups')
                     .success(function(data){
                         alert('asdadsd');

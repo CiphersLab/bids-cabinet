@@ -52,6 +52,8 @@ myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider,$http
     $facebookProvider.setAppId('778214432215760');
     $facebookProvider.setVersion("v2.2");
 
+
+
     $urlRouterProvider.otherwise('/');
 
 

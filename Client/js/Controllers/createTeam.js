@@ -42,9 +42,12 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
         })
             .success(function(data){
                 console.log(data);
-                /*$http.get('http://localhost:8000/api/findGroups')
+                $http.get('http://localhost:8000/api/findGroups')
                     .success(function(data){
+                        $rootScope.yourCreatedTeam=[];
+                        $rootScope.allTeamData=[];
 
+                        alert('asdadsd');
                         if(data){
                             $rootScope.allGroups=data;
                             for(var i=0;i<$rootScope.allGroups.length;i++)
@@ -62,8 +65,10 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
 
 
                     }
-                );*/
-                $state.go('ionBarStripped.yourTeam');
+                );
+
+
+                $state.go('ionBarStripped.yourTeam')
 
             }
         )

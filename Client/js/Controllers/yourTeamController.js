@@ -1,4 +1,4 @@
-myApp.controller('yourTeamController', function($rootScope,$scope,$ionicModal, $ionicPopup, $timeout,$http) {
+myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicModal, $ionicPopup, $timeout,$http) {
 
 
 

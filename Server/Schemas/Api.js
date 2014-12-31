@@ -36,7 +36,7 @@ module.exports.addUser=function(req,res){
                     }
                     else
 
-                    res.send(allGroupsData);
+                        res.send(allGroupsData);
                 });
 
             }
@@ -56,7 +56,9 @@ module.exports.addGroup=function(req,res){
     Groups.findOne({groupTitle:group_info.groupName},function(err,data){
         if(data){
             res.send({message:"Group Name not Available",code:403})
-        }else{
+                }
+
+        else{
             if(err){
                 res.send(err)
             }
@@ -104,7 +106,7 @@ module.exports.joinGroup=function(req,res){
     Groups.update({groupTitle:req.body.groupName},{$push:{'groupMembers':req.body.userName}},false,true);
     Groups.findOne({groupTitle:req.body.groupName},function(err,data){
         if(err)
-        res.send(err);
+            res.send(err);
         else
         {
             res.send(data.groupMembers)
