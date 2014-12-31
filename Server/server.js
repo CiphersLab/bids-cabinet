@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 8000;        // set our port
 
-
+app.get('/api/findGroups',Api.findGroup);
 app.post('/api/addUser',Api.addUser);
 app.post('/api/addGroup',Api.addGroup);
 app.post('/api/joinGroup',Api.joinGroup);

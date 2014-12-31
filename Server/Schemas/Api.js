@@ -54,33 +54,50 @@ module.exports.addGroup=function(req,res){
 
     var group_info=req.body;
     Groups.findOne({groupTitle:group_info.groupName},function(err,data){
-        if(err){
-            res.send(err)
-        }
-        else
-        {
-            if(data==null){
-                var groupEntry=new Groups({
-                    groupTitle:group_info.groupName,
-                    groupDescription:group_info.groupData,
-                    groupOwner:group_info.userTitle
-
-                });
-                groupEntry.save(function(err,data){
-                    if(err)
-                        res.send(err)
-                    else
-                    {
-                        res.send(data)
-                    }
-                })
+        if(data){
+            res.send({message:"Group Name not Available",code:403})
+        }else{
+            if(err){
+                res.send(err)
             }
-            else{
-                res.send(false);
+            else
+            {
+                if(data==null){
+                    var groupEntry=new Groups({
+                        groupTitle:group_info.groupName,
+                        groupDescription:group_info.groupData,
+                        groupOwner:group_info.userTitle
+
+                    });
+                    groupEntry.save(function(err,data){
+                        if(err)
+                            res.send(err)
+                        else
+                        {
+
+                            res.send(data);
+                        }
+                    })
+                }
+                else{
+                    res.send(false);
+                }
             }
         }
     })
 };
+
+module.exports.findGroup=function(req,res){
+
+    Groups.find(function(err,data){
+        if(err){
+            res.send(err)
+        }else{
+
+            res.send(data);
+        }
+    })
+}
 
 module.exports.joinGroup=function(req,res){
     var group_info=req.body;

@@ -1,6 +1,6 @@
 
-myApp.controller('createTeam',function($scope,$http,$rootScope,$state,appData){
-    $rootScope.myCreatedTeam=appData.getTeamData()[0];
+myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
+
 
     $scope.newMemberName="";
     $scope.groupName='';
@@ -35,21 +35,45 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,appData){
     $scope.createGroup=function(){
 //alert($scope.groupName);
 
-        $http.post('http://localhost:8000/api/addGroup',{groupName:$scope.groupName,groupData:$scope.groupDesc,userTitle: $rootScope.userName}).success(
-            function(data){
+        $http.post('http://localhost:8000/api/addGroup',{
+            groupName:$scope.groupName,
+            groupData:$scope.groupDesc,
+            userTitle: $rootScope.userName
+        })
+            .success(function(data){
+                console.log(data);
+                /*$http.get('http://localhost:8000/api/findGroups')
+                    .success(function(data){
+
+                        if(data){
+                            $rootScope.allGroups=data;
+                            for(var i=0;i<$rootScope.allGroups.length;i++)
+                            {
+                                if($rootScope.allGroups[i].groupOwner==$rootScope.userName)
+                                {
+                                    $rootScope.yourCreatedTeam.push($rootScope.allGroups[i]);
+
+                                }
+                                else{
+                                    $rootScope.allTeamData.push($rootScope.allGroups[i]);
+                                }
+                            }
+                        }
 
 
-
-                    $rootScope.allTeamData.push(data);
-                    alert($rootScope.myCreatedTeam[0]);
-                    console.log(data);
-
-
-
+                    }
+                );*/
+                $state.go('ionBarStripped.yourTeam');
 
             }
         )
-        $state.go('ionBarStripped.yourTeam');
+            .error(function(data) {
+
+                console.log('Error in Creating Team');
+
+            }
+        )
+
 
 
 

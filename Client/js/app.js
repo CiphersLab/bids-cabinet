@@ -48,6 +48,7 @@ myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider,$http
     //Remove the header containing XMLHttpRequest used to identify ajax call
     //that would prevent CORS from working
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
     $facebookProvider.setAppId('778214432215760');
     $facebookProvider.setVersion("v2.2");
 
@@ -147,31 +148,6 @@ myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider,$http
 });
 
 myApp.controller('HomeTabCtrl', function($scope,$facebook) {
-
-
-    $scope.isLoggedIn = true;
-    $scope.login = function() {
-        $facebook.login().then(function() {
-            refresh();
-        });
-    };
-
-
-    function refresh() {
-        $scope.isLoggedIn = true;
-        $facebook.api("/me").then(
-            $scope.isLoggedIn = true,
-            function(response) {
-                $scope.welcomeMsg = "Welcome " + response.name;
-
-            },
-            function(err) {
-
-                $scope.welcomeMsg = "Please log in";
-
-            });
-
-    }
 
 });
 

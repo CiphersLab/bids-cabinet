@@ -1,9 +1,8 @@
-myApp.controller('yourTeamController', function($scope,$ionicModal, $ionicPopup, $timeout, appData,$rootScope) {
-
-    $rootScope.allTeamData=[];
+myApp.controller('yourTeamController', function($rootScope,$scope,$ionicModal, $ionicPopup, $timeout,$http) {
 
 
-   $ionicModal.fromTemplateUrl('templates/teamInfo.html', {
+
+    $ionicModal.fromTemplateUrl('templates/teamInfo.html', {
         scope: $scope
     }).then(function(modal) {
             $scope.modal = modal
@@ -30,7 +29,7 @@ myApp.controller('yourTeamController', function($scope,$ionicModal, $ionicPopup,
 
         var myPopup = $ionicPopup.show({
             template: '<ul ng-repeat="members in appData.allTeams" class="row memberNamesDisplay">' +
-                '<li class="col">{{appData.teamName}}</li>' +
+             //   '<li class="col">{{dataService.teamName}}</li>' +
 
                 '</ul> ',
             title: 'Members',
