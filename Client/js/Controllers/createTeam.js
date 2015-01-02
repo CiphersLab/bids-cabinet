@@ -7,16 +7,18 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
     $scope.groupDesc='';
 
 
-    $scope.allMembers=[{
+    $rootScope.allMembers=[];
 
-        memberName:'member1'
-    },
-        {
-            memberName:'member2'
-        },
-        {
-            memberName:'member3'
-        }];
+    $http.get('http://localhost:8000/api/getUsers')
+        .success(function(data){
+
+
+            $rootScope.allMembers=data;
+
+        });
+
+
+
 
     $scope.addTeamMember=function(){
 
@@ -47,7 +49,7 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
                         $rootScope.yourCreatedTeam=[];
                         $rootScope.allTeamData=[];
 
-                        alert('asdadsd');
+
                         if(data){
                             $rootScope.allGroups=data;
                             for(var i=0;i<$rootScope.allGroups.length;i++)

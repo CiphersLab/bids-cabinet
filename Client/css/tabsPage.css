@@ -2,20 +2,76 @@ html,body{
     font-family: cursive;
 }
 
+
+select{
+
+    /* Size and position */
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+
+    /* Styles */
+    background: #fff;
+    border-radius: 7px;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+    cursor: pointer;
+    outline: none;
+
+    /* Font settings */
+    font-weight: bold;
+    color: #8AA8BD;
+}
+
+
+.yourTeamsPageBackground {
+    background-image: url("../img/backgroundImage3.png");
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-position: center;
+    display: block;
+
+
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+}
+
+.tabsContent {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .allTeamsPageBackground{
 
 
-    background: url("../img/backgroundImage6.jpg") no-repeat fixed center;
+    background-image: url("../img/backgroundImage6.jpg");
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-position: center;
+    display: block;
+
+
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
 
 
 }
-.yourTeamsPageBackground{
 
-
-    background: url("../img/backgroundImage3.png") no-repeat fixed center;
-
-
-}
 .tabsList{
 
     border-bottom: #000000 1px outset;
@@ -88,10 +144,7 @@ html,body{
 
 
 }
-.teamNameLabel > input
-{
-    border-bottom: thin solid gray;
-}
+
 
 .teamNameLabel > textarea
 {

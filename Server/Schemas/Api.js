@@ -99,7 +99,20 @@ module.exports.findGroup=function(req,res){
             res.send(data);
         }
     })
-}
+};
+
+module.exports.getUsers=function(req,res){
+
+    User.find(function(err,data){
+        if(err){
+            res.send(err)
+        }else{
+
+            res.send(data);
+        }
+    })
+};
+
 
 module.exports.joinGroup=function(req,res){
     var group_info=req.body;

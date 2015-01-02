@@ -5,8 +5,29 @@ html,body{
 }
 
 .background {
-   background: url("../img/backgroundImage4.png") no-repeat fixed center;
+    background-image: url("../img/backgroundImage4.png");
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-position: center;
+    display: block;
 
+
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+}
+
+.myContent {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .facebookLogin{

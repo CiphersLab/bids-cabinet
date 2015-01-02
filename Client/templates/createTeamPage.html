@@ -1,73 +1,90 @@
 
-    <ion-view view-title="Create">
-        <ion-content class="padding">
-            <div class="row">
+<ion-view view-title="Create">
+    <ion-content class="padding">
+        <div class="row">
 
 
-                <div id="imageUpload" class="col imageUpload">
+            <div id="imageUpload" class="col imageUpload">
 
-                    <p>Upload Image Here</p>
-                    <i class="ion-camera"></i>
-                </div>
-
-                <div class="col list createTeamName">
-
-                    <p>Enter Team's Name:</p>
-
-                    <label class="item item-input teamNameLabel">
-                        <input type="text" placeholder="Write Here..." ng-model="$parent.groupName">
-                    </label>
-                </div>
-
+                <p>Upload Image Here</p>
+                <i class="ion-camera"></i>
             </div>
 
-            <div id="teamDesc" class="row">
-                <div class="col list createTeamDesc">
-                    <p class="col-offset-10">Enter Team's Description:</p>
+            <div class="col list createTeamName">
 
-                    <label class="item item-input teamNameLabel">
-                        <textarea placeholder="Maximum 100 words Description" maxlength="100" cols="20" rows="10" ng-model="$parent.groupDesc"></textarea>
-                    </label>
-                </div>
+                <p>Enter Team's Name:</p>
 
-
+                <label class="item item-input teamNameLabel">
+                    <input type="text" placeholder="Write Here..." ng-model="$parent.groupName">
+                </label>
             </div>
 
-            <div id="teamMembers" class="row">
-                <div class="col col-80 list createTeamMembers">
-                    <p class="col-offset-10">Enter Member's Name:</p>
-                </div>
+        </div>
 
-                <div id="addTeamMember" class="col col-20 col-offset-10" ng-click="addTeamMember()">
-                    <i class="ion-plus-circled"></i>
-                </div>
+        <div id="teamDesc" class="row">
+            <div class="col list createTeamDesc">
+                <p class="col-offset-10">Enter Team's Description:</p>
+
+                <label class="item item-input teamNameLabel">
+                    <textarea placeholder="Maximum 100 words Description" maxlength="100" cols="20" rows="10" ng-model="$parent.groupDesc"></textarea>
+                </label>
             </div>
 
 
-            <ul id="memberName" ng-repeat="members in allMembers">
+        </div>
 
-                <li>
-                    <div class="row">
-                        <div class="col col-10 membersCount"> {{$index+1}} </div>
-                        <div class="col col-80">
-                            <label class="item item-input teamNameLabel">
-                                <input type="text" placeholder="Full Name..." value="{{members.memberName}}">
+        <div id="teamMembers" class="row">
+            <div class="col col-center list createTeamMembers">
+                <p class="col-offset-10">Select Member's Name:</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="list col col-80">
 
 
-                            </label>
-                        </div>
-                        <div class="col col-10" ng-click="removeTeamMember(members)"> <i class="ion-ios7-close-outline"></i></div>
+
+
+                <select class="wrapper-demo" ng-model="memberName">
+
+                    <option class="wrapper-dropdown-3" ng-repeat="members in allMembers">{{members.fb_title}}</option>
+
+
+                </select>
+
+            </div>
+
+
+
+            <div id="addTeamMember" class="col col-20" ng-click="addTeamMember()">
+                <i class="ion-plus-circled"></i>
+            </div>
+        </div>
+
+        </div>
+        <ul id="memberName" ng-repeat="members in allMembers">
+
+            <li>
+                <div class="row" style="border-bottom: thin solid grey;">
+                    <div class="col col-10 membersCount"> {{$index+1}} </div>
+                    <div class="col col-80">
+                        <label class="item item-input teamNameLabel">
+                           <p>{{members.memberName}}</p>
+
+
+                        </label>
                     </div>
-                </li>
-            </ul>
+                    <div class="col col-10" ng-click="removeTeamMember(members)"> <i class="ion-ios7-close-outline"></i></div>
+                </div>
+            </li>
+        </ul>
 
-<div id="submitButton" class="row">
+        <div id="submitButton" class="row">
 
-    <button class="button button-positive col col-center" ng-click="createGroup()">Create Group</button>
+            <button class="button button-positive col col-center" ng-click="createGroup()">Create Group</button>
 
-</div>
+        </div>
 
 
-            </div>
-        </ion-content>
-    </ion-view>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,6 +1,8 @@
 
 
-myApp.controller('loginController',function($scope,$facebook,$state,$http,$rootScope){
+myApp.controller('loginController',function($scope,$state,$http,$rootScope,$facebook){
+
+
 
     $rootScope.allGroups=[];
     $rootScope.allTeamData=[];
@@ -8,6 +10,11 @@ myApp.controller('loginController',function($scope,$facebook,$state,$http,$rootS
     $rootScope.yourCreatedTeam=[];
 
     $rootScope.userName='';
+
+
+
+    //For Web Facebook Login
+
     $scope.login = function() {
         $facebook.login().then(function() {
             refresh();
@@ -48,7 +55,7 @@ myApp.controller('loginController',function($scope,$facebook,$state,$http,$rootS
 
                 $http.get('http://localhost:8000/api/findGroups')
                     .success(function(data){
-                        alert('asdadsd');
+
                         if(data){
                             $rootScope.allGroups=data;
                             for(var i=0;i<$rootScope.allGroups.length;i++)

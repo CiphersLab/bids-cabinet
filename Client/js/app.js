@@ -3,10 +3,16 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
+
+
+
 var myApp=angular.module('starter', ['ionic','ngFacebook']);
 
-myApp.run(['$rootScope', '$window',function($ionicPlatform,$rootScope) {
+myApp.run(function($ionicPlatform) {
 
+
+
+    //Code starts for Web Facebook Login
 
     (function(){
         // If we've already installed the SDK, we're done
@@ -26,22 +32,25 @@ myApp.run(['$rootScope', '$window',function($ionicPlatform,$rootScope) {
         firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
     }());
 
-  /*  $ionicPlatform.ready(function() {
-        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-        // for form inputs)
-        if(window.cordova && window.cordova.plugins.Keyboard) {
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        }
-        if(window.StatusBar) {
-            StatusBar.styleDefault();
-        }
-    });
-*/
+    //SDK ends for Web Facebook Login
+
+     $ionicPlatform.ready(function() {
+     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+     // for form inputs)
+     if(window.cordova && window.cordova.plugins.Keyboard) {
+     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+     }
+     if(window.StatusBar) {
+     StatusBar.styleDefault();
+     }
+     });
 
 
-}]);
 
-myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider,$httpProvider) {
+});
+
+myApp.config(function($stateProvider, $urlRouterProvider,$httpProvider,$facebookProvider) {
+
 
     $httpProvider.defaults.useXDomain = true;
 
@@ -49,8 +58,10 @@ myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider,$http
     //that would prevent CORS from working
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
+    //SDK for Web Login Facebook
     $facebookProvider.setAppId('778214432215760');
-    $facebookProvider.setVersion("v2.2");
+     $facebookProvider.setVersion("v2.2");
+
 
 
 
@@ -74,7 +85,7 @@ myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider,$http
             templateUrl:"templates/ionBarStriped.html"
         })
 
-     .state('ionBarStripped.yourTeam',{
+        .state('ionBarStripped.yourTeam',{
 
 
             url:'/yourTeam',
@@ -119,35 +130,24 @@ myApp.config(function($facebookProvider,$stateProvider, $urlRouterProvider,$http
         })
 
 
-        .state('loginPage.ionBarStriped.yourCreatedTeams.createTeam',{
 
-            url:'/createTeam',
-            templateUrl: "templates/createTeamPage.html",
-            controller: 'createTeam'
-
-        })
-
-        .state('loginPage.ionBarStriped.yourCreatedTeams.teamInfo',{
+        .state('ionBarStripped.teamInfo',{
 
             url:'/teamInfo',
+            views:{
+                yourTeamTab:{
             templateUrl: "templates/teamInfo.html",
-            controller: 'teamController'
+            controller: 'teamInfoController'
+
+                }
+            }
 
         })
-
-        .state('loginPage.ionBarStriped.allTeams.teamInfo',{
-
-            url:'/teamInfo',
-            templateUrl: "templates/teamInfo.html",
-            controller: 'teamController'
-
-        });
-
-
 
 
 
 });
+
 
 myApp.controller('HomeTabCtrl', function($scope,$facebook) {
 

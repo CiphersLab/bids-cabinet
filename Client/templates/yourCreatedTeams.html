@@ -2,7 +2,8 @@
 
     <ion-view view-title="Your Teams" class="tabsListFont">
 
-        <ion-content class="padding yourTeamsPageBackground">
+        <ion-content class="yourTeamsPageBackground"></ion-content>
+        <ion-content class="padding tabsContent">
             <p>
 
             <div class="row">
@@ -28,7 +29,9 @@
             </div>
 
             <div ng-repeat="createdTeams in yourCreatedTeam">
-                <div class="row tabsList" ng-click="openModal(myTeams)">
+
+
+                <div class="row tabsList" ng-click="openModal($index)">
 
                    <!-- <div class="col col-10">
                         <img ng-src="img/{{createdTeams.teamImage}}"/>
@@ -44,6 +47,7 @@
                     </div-->
 
                 </div>
+
             </div>
             <!--a class="button icon icon-right ion-chevron-right" href="#/tab/facts">
 
