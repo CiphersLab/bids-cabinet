@@ -15,34 +15,46 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
 
 
             $rootScope.allUsers=data;
+            
+            //Here logic is written to prevent owner name in the add Team User List in 'Create your Team Tab'
+
+            for(var i=0;i<$rootScope.allUsers.length;i++)
+            {
+                if($rootScope.allUsers[i].fb_title==$rootScope.userName){
+
+                    $rootScope.allUsers.splice(i,1);
+
+                }
+            }
+
+            //Logic Ends
+
 
         });
-
-
 
 
     $scope.addTeamMember=function(){
 
 
-        $rootScope.addedMembers.push({teamUsers: $scope.memberName.fb_title});
+        $rootScope.addedMembers.push($scope.memberName.fb_title);
 
     };
     $scope.removeTeamMember=function(members){
-        $scope.myIndex=$scope.allMembers.indexOf(members);
+        $scope.myIndex=$rootScope.addedMembers.indexOf(members);
 
-        $scope.allMembers.splice($scope.myIndex,1);
+        $rootScope.addedMembers.splice($scope.myIndex,1);
 
 
     };
 
     $scope.createGroup=function(){
-//alert($scope.groupName);
+
 
         $http.post('http://localhost:8000/api/addGroup',{
             groupName:$scope.groupName,
             groupData:$scope.groupDesc,
             userTitle: $rootScope.userName,
-            addedMembers:$rootScope.allMembers
+            addedMembers:$rootScope.addedMembers
         })
             .success(function(data){
                 console.log(data);
