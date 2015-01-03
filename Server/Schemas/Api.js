@@ -68,7 +68,8 @@ module.exports.addGroup=function(req,res){
                     var groupEntry=new Groups({
                         groupTitle:group_info.groupName,
                         groupDescription:group_info.groupData,
-                        groupOwner:group_info.userTitle
+                        groupOwner:group_info.userTitle,
+                        groupMembers:group_info.addedMembers
 
                     });
                     groupEntry.save(function(err,data){

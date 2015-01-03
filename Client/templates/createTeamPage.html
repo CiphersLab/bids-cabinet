@@ -44,12 +44,12 @@
 
 
 
-                <select class="wrapper-demo" ng-model="memberName">
-
-                    <option class="wrapper-dropdown-3" ng-repeat="members in allMembers">{{members.fb_title}}</option>
+                <select class="wrapper-demo" ng-model="$parent.memberName" ng-options="members.fb_title for members in allUsers"></select>
 
 
-                </select>
+
+
+
 
             </div>
 
@@ -61,14 +61,14 @@
         </div>
 
         </div>
-        <ul id="memberName" ng-repeat="members in allMembers">
+        <ul id="memberName" ng-repeat="members in addedMembers">
 
             <li>
                 <div class="row" style="border-bottom: thin solid grey;">
                     <div class="col col-10 membersCount"> {{$index+1}} </div>
                     <div class="col col-80">
                         <label class="item item-input teamNameLabel">
-                           <p>{{members.memberName}}</p>
+                            <p>{{members.teamUsers}}</p>
 
 
                         </label>

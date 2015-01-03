@@ -2,18 +2,19 @@
 myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
 
 
-    $scope.newMemberName="";
+
     $scope.groupName='';
     $scope.groupDesc='';
 
-
-    $rootScope.allMembers=[];
+    $rootScope.addedMembers=[];
+    $rootScope.allUsers=[];
+    $scope.memberName=$rootScope.userName;
 
     $http.get('http://localhost:8000/api/getUsers')
         .success(function(data){
 
 
-            $rootScope.allMembers=data;
+            $rootScope.allUsers=data;
 
         });
 
@@ -23,7 +24,7 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
     $scope.addTeamMember=function(){
 
 
-        $scope.allMembers.push({memberName:$scope.newMemberName});
+        $rootScope.addedMembers.push({teamUsers: $scope.memberName.fb_title});
 
     };
     $scope.removeTeamMember=function(members){
@@ -40,7 +41,8 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
         $http.post('http://localhost:8000/api/addGroup',{
             groupName:$scope.groupName,
             groupData:$scope.groupDesc,
-            userTitle: $rootScope.userName
+            userTitle: $rootScope.userName,
+            addedMembers:$rootScope.allMembers
         })
             .success(function(data){
                 console.log(data);
