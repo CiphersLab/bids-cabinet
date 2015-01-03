@@ -15,7 +15,7 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
 
 
             $rootScope.allUsers=data;
-            
+
             //Here logic is written to prevent owner name in the add Team User List in 'Create your Team Tab'
 
             for(var i=0;i<$rootScope.allUsers.length;i++)
@@ -57,7 +57,11 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
             addedMembers:$rootScope.addedMembers
         })
             .success(function(data){
-                console.log(data);
+                console.log(data.code);
+                $scope.sameTeamName=data.code;
+
+
+
                 $http.get('http://localhost:8000/api/findGroups')
                     .success(function(data){
                         $rootScope.yourCreatedTeam=[];
@@ -66,16 +70,27 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
 
                         if(data){
                             $rootScope.allGroups=data;
-                            for(var i=0;i<$rootScope.allGroups.length;i++)
+
+
+
+                            for(var j=0;j<$rootScope.allGroups.length;j++)
                             {
-                                if($rootScope.allGroups[i].groupOwner==$rootScope.userName)
+
+                                if($rootScope.allGroups[j].groupOwner==$rootScope.userName)
                                 {
-                                    $rootScope.yourCreatedTeam.push($rootScope.allGroups[i]);
+                                    $rootScope.yourCreatedTeam.push($rootScope.allGroups[j]);
 
                                 }
-                                else{
-                                    $rootScope.allTeamData.push($rootScope.allGroups[i]);
+
+                                else
+
+                                {
+                                    $rootScope.allTeamData.push($rootScope.allGroups[j]);
                                 }
+
+
+
+
                             }
                         }
 
@@ -83,9 +98,12 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
                     }
                 );
 
-
-                $state.go('ionBarStripped.yourTeam')
-
+                if($scope.sameTeamName!=403){
+                    $state.go('ionBarStripped.yourTeam');
+                }
+                else{
+                    alert('Team Name is already in use');
+                }
             }
         )
             .error(function(data) {

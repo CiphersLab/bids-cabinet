@@ -1,7 +1,10 @@
 
 <ion-view view-title="Create">
     <ion-content class="padding">
+
+
         <div class="row">
+
 
 
             <div id="imageUpload" class="col imageUpload">
@@ -15,18 +18,19 @@
                 <p>Enter Team's Name:</p>
 
                 <label class="item item-input teamNameLabel">
-                    <input type="text" placeholder="Write Here..." ng-model="$parent.groupName">
+                    <input type="text" placeholder="Write Here..." ng-model="$parent.groupName" required>
                 </label>
             </div>
 
         </div>
+
 
         <div id="teamDesc" class="row">
             <div class="col list createTeamDesc">
                 <p class="col-offset-10">Enter Team's Description:</p>
 
                 <label class="item item-input teamNameLabel">
-                    <textarea placeholder="Maximum 100 words Description" maxlength="100" cols="20" rows="10" ng-model="$parent.groupDesc"></textarea>
+                    <textarea placeholder="Maximum 100 words Description" maxlength="100" cols="20" rows="10" ng-model="$parent.groupDesc" required></textarea>
                 </label>
             </div>
 
@@ -88,6 +92,6 @@
         </div>
 
 
-        </div>
+
     </ion-content>
 </ion-view>

@@ -53,16 +53,12 @@ module.exports.addUser=function(req,res){
 module.exports.addGroup=function(req,res){
 
     var group_info=req.body;
-    Groups.findOne({groupTitle:group_info.groupName},function(err,data){
+    Groups.findOne({groupTitle:group_info.groupName},function(err,data){            //To perform a check for similar Team Name
         if(data){
-            res.send({message:"Group Name not Available",code:403})
+            res.send({message:"Team Name not Available",code:403})
                 }
 
-        else{
-            if(err){
-                res.send(err)
-            }
-            else
+        else
             {
                 if(data==null){
                     var groupEntry=new Groups({
@@ -86,7 +82,7 @@ module.exports.addGroup=function(req,res){
                     res.send(false);
                 }
             }
-        }
+
     })
 };
 
