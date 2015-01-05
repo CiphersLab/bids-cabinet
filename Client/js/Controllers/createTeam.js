@@ -1,12 +1,12 @@
 
 myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
 
+    //Asad Coding
     $scope.file = null;
     $scope.encoded = base64.encode('a string');
-    $scope.groupName='';
-    $scope.groupDesc='';
+   //Asad Coding Ends
 
-    $rootScope.addedMembers=[];
+
     $rootScope.allUsers=[];
     $scope.memberName=$rootScope.userName;
     $scope.imageModel="";
