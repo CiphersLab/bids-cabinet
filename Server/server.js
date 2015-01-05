@@ -12,7 +12,7 @@ app.use(function(req, res, next) {
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("'Access-Control-Allow-Methods',['OPTIONS', 'GET', 'POST']");
+    res.header("'Access-Control-Allow-Methods',['OPTIONS', 'GET', 'POST', 'DELETE']");
     res.header("'Access-Control-Allow-Headers','Content-Type'");
 
     next();
@@ -29,6 +29,7 @@ app.get('/api/findGroups',Api.findGroup);
 app.post('/api/addUser',Api.addUser);
 app.post('/api/addGroup',Api.addGroup);
 app.post('/api/joinGroup',Api.joinGroup);
+app.post('/api/deleteGroup',Api.deleteGroup);
 
 
 app.listen(port);
