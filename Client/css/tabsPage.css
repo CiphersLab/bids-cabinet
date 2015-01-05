@@ -284,9 +284,13 @@ select{
 .teamInfo > div >  p{
     font-weight: bold;
     font-size: 15px;
+
+}
+.teamInfo > div > i{
+    font-size: 25px;
 }
 .teamInfo > div ~ div > i{
-    font-size: 35px;
+font-size: 25px;
 
 
 }

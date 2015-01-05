@@ -125,3 +125,18 @@ module.exports.joinGroup=function(req,res){
     })
 
 };
+
+module.exports.deleteGroup=function(req,res){
+
+
+    Groups.remove({groupTitle:req.body.groupName},function(err,data){
+
+        if(data){
+            res.send(data);
+        }
+        else{
+            res.send(err);
+        }
+    })
+
+};
