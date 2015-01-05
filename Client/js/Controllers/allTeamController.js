@@ -1,17 +1,40 @@
-myApp.controller('allTeamController', function($rootScope,$scope,$ionicModal, $ionicPopup, $timeout) {
+myApp.controller('allTeamController', function($rootScope,$scope,$ionicModal, $ionicPopup, $timeout,$http) {
+
+    $rootScope.indexOfGroup='';
+
+    $scope.myGroupTitle='';
+    $scope.myGroupDesc='';
+
 
 
 
     $ionicModal.fromTemplateUrl('templates/teamInfo.html', {
         scope: $scope
+
     }).then(function(modal) {
             $scope.modal = modal
         });
 
-    $scope.openModal = function(myTeams) {
-        console.log('hello');
+    $scope.openModal = function(index) {
 
-        $scope.modal.show(myTeams);
+        console.log('Modal is called');
+
+        $scope.indexOfGroup=index;
+
+        $http.get('http://localhost:8000/api/findGroups')
+            .success(function(data){
+                $scope.allTeamsGroupInfo=[];
+
+
+                $scope.allTeamsGroupInfo.push(data[$scope.indexOfGroup])
+
+                $scope.myGroupTitle=$scope.allTeamsGroupInfo[0].groupTitle;
+                $scope.myGroupDesc=$scope.allTeamsGroupInfo[0].groupDescription;
+
+            });
+
+
+        $scope.modal.show();
     };
 
     $scope.closeModal = function() {
@@ -21,6 +44,7 @@ myApp.controller('allTeamController', function($rootScope,$scope,$ionicModal, $i
     $scope.$on('$destroy', function() {
         $scope.modal.remove()
     });
+
 
     //Popup to show Team Members
 

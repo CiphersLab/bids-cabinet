@@ -21,8 +21,8 @@
 
             </div>
             </p>
-            <div ng-repeat="allTeams in allTeamData">
-                <div class="row tabsList">
+            <div ng-repeat="allTeams in allGroups">
+                <div ng-if="allTeams.groupOwner!=userName" class="row tabsList" ng-click="openModal($index)">
 
                     <!--div class="col col-10">
                         <img ng-src="img/{{allTeams.teamImage}}"/>

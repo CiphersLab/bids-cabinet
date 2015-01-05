@@ -1,11 +1,11 @@
 myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicModal, $ionicPopup, $timeout,$http) {
 
 
-$rootScope.indexOfGroup='';
+    $rootScope.indexOfGroup='';
 
     $scope.myGroupTitle='';
     $scope.myGroupDesc='';
-    $rootScope.groupInfo=[];
+
 
 
 
@@ -17,18 +17,20 @@ $rootScope.indexOfGroup='';
         });
 
     $scope.openModal = function(index) {
+
         console.log('Modal is called');
 
-        $rootScope.indexOfGroup=index;
+        $scope.indexOfGroup=index;
 
         $http.get('http://localhost:8000/api/findGroups')
             .success(function(data){
-                $rootScope.groupInfo=[];
+                $scope.groupInfo=[];
 
-                $rootScope.groupInfo.push(data[$rootScope.indexOfGroup])
 
-                $scope.myGroupTitle=$rootScope.groupInfo[0].groupTitle;
-                $scope.myGroupDesc=$rootScope.groupInfo[0].groupDescription;
+                $scope.groupInfo.push(data[$scope.indexOfGroup]);
+
+                $scope.myGroupTitle=$scope.groupInfo[0].groupTitle;
+                $scope.myGroupDesc=$scope.groupInfo[0].groupDescription;
 
             });
 

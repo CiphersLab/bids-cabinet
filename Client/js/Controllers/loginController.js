@@ -58,17 +58,8 @@ myApp.controller('loginController',function($scope,$state,$http,$rootScope,$face
 
                         if(data){
                             $rootScope.allGroups=data;
-                            for(var i=0;i<$rootScope.allGroups.length;i++)
-                            {
-                                if($rootScope.allGroups[i].groupOwner==$rootScope.userName)
-                                {
-                                    $rootScope.yourCreatedTeam.push($rootScope.allGroups[i]);
 
-                                }
-                                else{
-                                    $rootScope.allTeamData.push($rootScope.allGroups[i]);
-                                }
-                            }
+
                         }
                         $state.go('ionBarStripped.yourTeam');
 
