@@ -3,7 +3,8 @@ var groupSchema=mongoose.Schema({
     groupTitle:String,
     groupDescription:String,
     groupOwner:String,
-    groupMembers:[String]
+    groupMembers:[String],
+    imageData:{imageName:String,imagePath:String}
 });
 
 

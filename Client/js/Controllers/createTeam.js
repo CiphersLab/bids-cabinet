@@ -1,15 +1,15 @@
 
-myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
+myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
 
-
-
+    $scope.file = null;
+    $scope.encoded = base64.encode('a string');
     $scope.groupName='';
     $scope.groupDesc='';
 
     $rootScope.addedMembers=[];
     $rootScope.allUsers=[];
     $scope.memberName=$rootScope.userName;
-
+    $scope.imageModel="";
     $http.get('http://localhost:8000/api/getUsers')
         .success(function(data){
 
@@ -46,15 +46,47 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
 
 
     };
+    var getFileReader = function( $scope ) {
+
+        var fileReader = new FileReader();
+
+        fileReader.onloadend = function() {
+
+          $scope.imageModel = fileReader.result;
+
+        }
+
+        return fileReader;
+    };
+    $scope.saveImage = function(flow){
+
+        if(flow){
+            var abc = !!{png:1,gif:1,jpg:1,jpeg:1}[flow.files[0].getExtension()]
+            if(abc == true){
+
+                var fileReader = getFileReader( $scope ),
+                    file = flow.files[0].file;
+
+                fileReader.readAsDataURL(file);
+
+                $scope.$apply();
+
+            }else{
+                flow.cancel()
+            }
+        }
+    }
+     //  $scope.groupData = {userID:userData._id,title:'',description:'',picData:'',membersID:[],is_gps:true,is_fb:false,is_twit:false,is_private:false}
 
     $scope.createGroup=function(){
 
-
+alert($scope.imageModel);
         $http.post('http://localhost:8000/api/addGroup',{
             groupName:$scope.groupName,
             groupData:$scope.groupDesc,
             userTitle: $rootScope.userName,
-            addedMembers:$rootScope.addedMembers
+            addedMembers:$rootScope.addedMembers,
+            imageData:$scope.imageModel
         })
             .success(function(data){
                 console.log(data.code);

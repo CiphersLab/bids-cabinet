@@ -6,7 +6,7 @@
 
 
 
-var myApp=angular.module('starter', ['ionic','ngFacebook']);
+var myApp=angular.module('starter', ['ionic','ngFacebook','ab-base64','flow']);
 
 myApp.run(function($ionicPlatform) {
 

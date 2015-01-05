@@ -3,6 +3,7 @@ var app=express();
 var mongoose=require('mongoose');
 mongoose.connect('mongodb://Asad:abc123@ds047950.mongolab.com:47950/bidmanagement');
 var morgan=require('morgan');
+var connect=require('connect');
 var bodyParser=require('body-parser');
 var methodOverride=require('method-override');
 var Schemas=require('./Schemas/Schemas.js');
@@ -19,7 +20,8 @@ app.use(function(req, res, next) {
 });
 
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(connect({limit:'50mb'}));
+app.use(bodyParser.urlencoded( {extended: true,limit: '50mb'}));
 app.use(bodyParser.json());
 
 var port = process.env.PORT || 8000;        // set our port
@@ -27,7 +29,7 @@ var port = process.env.PORT || 8000;        // set our port
 app.get('/api/getUsers',Api.getUsers)
 app.get('/api/findGroups',Api.findGroup);
 app.post('/api/addUser',Api.addUser);
-app.post('/api/addGroup',Api.addGroup);
+app.post('/api/addGroup',bodyParser.urlencoded({limit: '50mb'}),Api.addGroup);
 app.post('/api/joinGroup',Api.joinGroup);
 
 

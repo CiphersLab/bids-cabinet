@@ -9,8 +9,18 @@
 
             <div id="imageUpload" class="col imageUpload">
 
-                <p>Upload Image Here</p>
-                <i class="ion-camera"></i>
+                <div class="circle-photo-container" flow-init="saveImage($flow)" flow-files-submitted="saveImage($flow)"   flow-file-success="saveImage($flow)" flow-attrs="{accept:'image/*'}">
+                    <div class="photo-container" >
+                        <div ng-hide="$flow.files.length" class="circle-photo">dfsdfsdfsd
+                            <div class="content">
+                            </div>
+                        </div>
+                        <img  flow-img="$flow.files[0]" width="100" height="100" style="margin-left: 37%" flow-btn>
+                    </div>
+                    <div class="photo-upload-container" >
+                        <i class="upload-button"><h1>ssssssssss</h1></i>
+                    </div>
+                </div>
             </div>
 
             <div class="col list createTeamName">

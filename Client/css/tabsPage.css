@@ -2,6 +2,71 @@ html,body{
     font-family: cursive;
 }
 
+.circle-photo-container {
+    height: 100%;
+    width: 40%;
+    position: relative;}
+
+.photo-container {
+
+    width: 80%;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+    display: table;
+    padding: 15px;}
+
+.circle-photo {
+    position: relative;
+    margin: 0px auto;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;}
+
+.content {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: url('') no-repeat center;
+    background-size: contain;
+    padding: 50px;
+    display: table-cell;
+    vertical-align: middle;}
+
+&::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.photo-upload-container {
+    height: 100%;
+    width: 100%;
+    line-height: 100%;
+    display: none;
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%);}
+
+.upload-button {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    font-weight: 500;
+    text-align: center;
+    color: gray;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+
 
 select{
 
@@ -192,7 +257,7 @@ select{
 
 .groupInfoImg > img
 
-    {
+{
     width: 40px;
     height: 40px;
 
@@ -221,7 +286,7 @@ select{
     font-size: 15px;
 }
 .teamInfo > div ~ div > i{
-font-size: 35px;
+    font-size: 35px;
 
 
 }
