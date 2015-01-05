@@ -8,8 +8,6 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
     $scope.myGroupOwner='';
 
 
-
-
     $ionicModal.fromTemplateUrl('templates/teamInfo.html', {
         scope: $scope
 
@@ -112,5 +110,16 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
         });
     };
 
+
+    $scope.editGroup=function(){
+
+        $rootScope.groupName=$scope.myGroupTitle;
+        $rootScope.groupDesc=$scope.myGroupDesc;
+        $rootScope.addedMembers=$scope.myGroupMembers;
+        $state.go('ionBarStripped.createTeam');
+        $scope.modal.hide();
+
+
+    }
 
 });
