@@ -1,14 +1,14 @@
 
 myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
-
-    //Asad Coding
+    $scope.memberName=$rootScope.allUsers;
+    $rootScope.addedMembers=[];
     $scope.file = null;
-    $scope.encoded = base64.encode('a string');
+
    //Asad Coding Ends
 
 
     $rootScope.allUsers=[];
-    $scope.memberName=$rootScope.userName;
+
     $scope.imageModel="";
     $http.get('http://localhost:8000/api/getUsers')
         .success(function(data){
@@ -16,11 +16,11 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
 
             $rootScope.allUsers=data;
 
-            //Here logic is written to prevent owner name in the add Team User List in 'Create your Team Tab'
+                    //Here logic is written to prevent owner name in the add Team User List in 'Create your Team Tab'
 
-            for(var i=0;i<$rootScope.allUsers.length;i++)
-            {
-                if($rootScope.allUsers[i].fb_title==$rootScope.userName){
+                    for(var i=0;i<$rootScope.allUsers.length;i++)
+                    {
+                        if($rootScope.allUsers[i].fb_title==$rootScope.userName){
 
                     $rootScope.allUsers.splice(i,1);
 
@@ -77,6 +77,8 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
         }
     }
      //  $scope.groupData = {userID:userData._id,title:'',description:'',picData:'',membersID:[],is_gps:true,is_fb:false,is_twit:false,is_private:false}
+    $scope.groupName="";
+    $scope.groupDesc="";
 
     $scope.createGroup=function(){
 

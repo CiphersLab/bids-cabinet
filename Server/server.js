@@ -22,7 +22,7 @@ app.use(function(req, res, next) {
 
 app.use(connect({limit:'50mb'}));
 app.use(bodyParser.urlencoded( {extended: true,limit: '50mb'}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit:'50mb'}));
 
 var port = process.env.PORT || 8000;        // set our port
 
