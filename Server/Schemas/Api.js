@@ -66,7 +66,7 @@ module.exports.addGroup=function(req,res){
                         groupDescription:group_info.groupData,
                         groupOwner:group_info.userTitle,
                         groupMembers:group_info.addedMembers,
-                        imageData:{imageName:group_info.imageModel.filename,imagePath:group_info.imageModel.base64}
+                        imageData:{imageName:"",imagePath:group_info.imageData}
 
                     });
                     groupEntry.save(function(err,data){
