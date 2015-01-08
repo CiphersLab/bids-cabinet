@@ -31,7 +31,7 @@
             <div ng-repeat="createdTeams in allGroups">
 
 
-                <div ng-if="createdTeams.groupOwner==userName" class="row tabsList" ng-click="openModal($index)">
+                <div ng-if="createdTeams.groupOwner==userName" class="row tabsList" ng-click="openModal(createdTeams.groupTitle)">
 
                    <!-- <div class="col col-10">
                         <img ng-src="img/{{createdTeams.teamImage}}"/>

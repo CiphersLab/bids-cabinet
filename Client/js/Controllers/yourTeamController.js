@@ -1,11 +1,28 @@
 myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicModal, $ionicPopup, $timeout,$http) {
 
+    console.log('your team');
 
-    $rootScope.indexOfGroup='';
-
+    $scope.indexOfGroup='';
+    $scope.userName = localStorage.browserUserName;
     $scope.myGroupTitle='';
     $scope.myGroupDesc='';
     $scope.myGroupOwner='';
+    $scope.myGroupImage='';
+
+
+
+    $http.get('http://localhost:8000/api/findGroupNoImage')
+        .success(function(data){
+
+            if(data){
+                $rootScope.allGroups=data;
+
+
+            }
+
+
+        }
+    );
 
 
     $ionicModal.fromTemplateUrl('templates/teamInfo.html', {
@@ -21,17 +38,19 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
 
         $scope.indexOfGroup=index;
 
-        $http.get('http://localhost:8000/api/findGroups')
+        $http.post('http://localhost:8000/api/findOneGroup',{groupName:$scope.indexOfGroup})
             .success(function(data){
                 $scope.groupInfo=[];
 
 
-                $scope.groupInfo.push(data[$scope.indexOfGroup]);
+                $scope.groupInfo.push(data);
 
                 $scope.myGroupTitle=$scope.groupInfo[0].groupTitle;
                 $scope.myGroupDesc=$scope.groupInfo[0].groupDescription;
                 $scope.myGroupOwner=$scope.groupInfo[0].groupOwner;
                 $scope.myGroupMembers=$scope.groupInfo[0].groupMembers;
+                $scope.myGroupImage=$scope.groupInfo[0].imageData.imagePath;
+
 
             });
 
@@ -55,9 +74,9 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
                 console.log(data);
             })
 
-            .error(function(data){
+            .error(function(data){           //This error is generating because I am deleting group from 'Post' Method using remove.
 
-                $http.get('http://localhost:8000/api/findGroups')
+                $http.get('http://localhost:8000/api/findGroupNoImage')
                     .success(function(data){
                         $rootScope.yourCreatedTeam=[];
                         $rootScope.allTeamData=[];
@@ -91,7 +110,7 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
 
 
 
-                    })
+                    });
 
                 $scope.modal.hide();
             });
@@ -120,6 +139,7 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
         $scope.modal.hide();
 
 
-    }
+    };
+
 
 });

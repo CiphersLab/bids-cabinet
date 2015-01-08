@@ -11,14 +11,14 @@
 
                 <div class="circle-photo-container" flow-init="saveImage($flow)" flow-files-submitted="saveImage($flow)"   flow-file-success="saveImage($flow)" flow-attrs="{accept:'image/*'}">
                     <div class="photo-container" >
-                        <div ng-hide="$flow.files.length" class="circle-photo">dfsdfsdfsd
+                        <div ng-hide="$flow.files.length" class="circle-photo">
                             <div class="content">
                             </div>
                         </div>
                         <img  flow-img="$flow.files[0]" width="100" height="100" style="margin-left: 37%" flow-btn>
                     </div>
                     <div class="photo-upload-container" >
-                        <i class="upload-button"><h1>ssssssssss</h1></i>
+                        <i class="upload-button"><h1>sssssssss</h1></i>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
 
 
 
-                <select class="wrapper-demo" ng-model="memberName" ng-options="members.fb_title for members in allUsers">
+                <select class="wrapper-demo" ng-model="$parent.memberName" ng-options="members.fb_title for members in allUsers">
 
                     <option value="">-- Select Users --</option>
                 </select>

@@ -1,12 +1,27 @@
-myApp.controller('allTeamController', function($rootScope,$scope,$ionicModal, $ionicPopup, $timeout,$http) {
+myApp.controller('allTeamController', function($rootScope,$scope,$ionicModal, $ionicPopup, $timeout,$http, $state) {
+
+
+    console.log('all team');
 
     $rootScope.indexOfGroup='';
 
     $scope.myGroupTitle='';
     $scope.myGroupDesc='';
 
+    $scope.userName = localStorage.browserUserName;
+
+    $http.get('http://localhost:8000/api/findGroupNoImage')
+        .success(function(data){
+
+            if(data){
+                $scope.allGroups=data;
 
 
+            }
+
+
+        }
+    );
 
     $ionicModal.fromTemplateUrl('templates/teamInfo.html', {
         scope: $scope
@@ -30,6 +45,8 @@ myApp.controller('allTeamController', function($rootScope,$scope,$ionicModal, $i
 
                 $scope.myGroupTitle=$scope.allTeamsGroupInfo[0].groupTitle;
                 $scope.myGroupDesc=$scope.allTeamsGroupInfo[0].groupDescription;
+                $scope.myGroupOwner=$scope.allTeamsGroupInfo[0].groupOwner;
+                $scope.myGroupMembers=$scope.allTeamsGroupInfo[0].groupMembers;
 
             });
 
@@ -46,36 +63,83 @@ myApp.controller('allTeamController', function($rootScope,$scope,$ionicModal, $i
     });
 
 
+
+
+
+
+
+    $scope.removeGroup=function(myGroupName){
+
+        $http.post('http://localhost:8000/api/deleteGroup',{groupName:myGroupName})
+            .success(function(data){
+                console.log(data);
+            })
+
+            .error(function(data){
+
+                $http.get('http://localhost:8000/api/findGroups')
+                    .success(function(data){
+                        $rootScope.yourCreatedTeam=[];
+                        $rootScope.allTeamData=[];
+
+
+                        if(data){
+                            $rootScope.allGroups=data;
+
+
+
+                            for(var j=0;j<$rootScope.allGroups.length;j++)
+                            {
+
+                                if($rootScope.allGroups[j].groupOwner==$rootScope.userName)
+                                {
+                                    $rootScope.yourCreatedTeam.push($rootScope.allGroups[j]);
+
+                                }
+
+                                else
+
+                                {
+                                    $rootScope.allTeamData.push($rootScope.allGroups[j]);
+                                }
+
+
+
+
+                            }
+                        }
+
+
+
+                    });
+
+                $scope.modal.hide();
+            });
+    };
+
     //Popup to show Team Members
 
-    $scope.showPopup = function() {
+    $scope.showAlert = function() {
 
-
-        var myPopup = $ionicPopup.show({
-            template: '<ul ng-repeat="members in appData.allTeams" class="row memberNamesDisplay">' +
-             //   '<li class="col">{{dataService.teamName}}</li>' +
-
-                '</ul> ',
-            title: 'Members',
-            subTitle: 'Admin is: Zubair',
-            scope: $scope,
-            buttons: [
-
-                {
-                    text: '<b>Okay</b>',
-                    type: 'button-positive'
-
-                }
-            ]
+        var alertPopup = $ionicPopup.alert({
+            title: 'Group Admin is:'+$scope.myGroupOwner,
+            template: 'Group Members Are:'+'<br>'+$scope.myGroupMembers
         });
-        myPopup.then(function(res) {
-
+        alertPopup.then(function(res) {
+            console.log('Members Shown');
         });
-        $timeout(function() {
-            myPopup.close(); //close the popup after 10 seconds for some reason
-        }, 10000);
     };
 
 
+    $scope.editGroup=function(){
+
+        $rootScope.groupName=$scope.myGroupTitle;
+        $rootScope.groupDesc=$scope.myGroupDesc;
+        $rootScope.addedMembers=$scope.myGroupMembers;
+        $state.go('ionBarStripped.createTeam');
+        $scope.modal.hide();
+
+
+    };
 
 });

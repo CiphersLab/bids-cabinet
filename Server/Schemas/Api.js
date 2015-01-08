@@ -99,6 +99,35 @@ module.exports.findGroup=function(req,res){
     })
 };
 
+module.exports.findOneGroup=function(req,res){
+
+    var group_info=req.body;
+
+    Groups.findOne({groupTitle:group_info.groupName},function(err,data){
+
+console.log(group_info.groupName);
+        if(data){
+            res.send(data);
+        }
+        else{
+            res.send(err);
+        }
+
+    })
+};
+
+module.exports.findGroupNoImage=function(req,res){
+
+    Groups.find({},{imageData:0},function(err,data){
+        if(err){
+            res.send(err)
+        }else{
+
+            res.send(data);
+        }
+    })
+};
+
 module.exports.getUsers=function(req,res){
 
     User.find(function(err,data){

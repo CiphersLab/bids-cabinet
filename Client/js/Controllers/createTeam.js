@@ -1,28 +1,33 @@
 
 myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
-    $scope.memberName=$rootScope.allUsers;
+
+    console.log('create team');
+
+    $scope.userName=localStorage.browserUserName;
+    $scope.memberName='';
     $rootScope.addedMembers=[];
     $scope.file = null;
 
    //Asad Coding Ends
 
 
-    $rootScope.allUsers=[];
+    $scope.allUsers=[];
 
     $scope.imageModel="";
+
     $http.get('http://localhost:8000/api/getUsers')
         .success(function(data){
 
 
-            $rootScope.allUsers=data;
+            $scope.allUsers=data;
 
                     //Here logic is written to prevent owner name in the add Team User List in 'Create your Team Tab'
 
-                    for(var i=0;i<$rootScope.allUsers.length;i++)
+                    for(var i=0;i<$scope.allUsers.length;i++)
                     {
-                        if($rootScope.allUsers[i].fb_title==$rootScope.userName){
+                        if($scope.allUsers[i].fb_title==$scope.userName){
 
-                    $rootScope.allUsers.splice(i,1);
+                    $scope.allUsers.splice(i,1);
 
                 }
             }
@@ -82,12 +87,12 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
 
     $scope.createGroup=function(){
 
-alert($scope.imageModel);
+
         $http.post('http://localhost:8000/api/addGroup',{
             groupName:$scope.groupName,
             groupData:$scope.groupDesc,
-            userTitle: $rootScope.userName,
-            addedMembers:$rootScope.addedMembers,
+            userTitle: $scope.userName,
+            addedMembers:$scope.addedMembers,
             imageData:$scope.imageModel
         })
             .success(function(data){
@@ -110,7 +115,7 @@ alert($scope.imageModel);
                             for(var j=0;j<$rootScope.allGroups.length;j++)
                             {
 
-                                if($rootScope.allGroups[j].groupOwner==$rootScope.userName)
+                                if($rootScope.allGroups[j].groupOwner==$scope.userName)
                                 {
                                     $rootScope.yourCreatedTeam.push($rootScope.allGroups[j]);
 
@@ -151,7 +156,6 @@ alert($scope.imageModel);
 
 
     }
-
 
 
 

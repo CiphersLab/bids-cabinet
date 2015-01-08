@@ -36,12 +36,16 @@ myApp.controller('loginController',function($scope,$state,$http,$rootScope,$face
                         {
                             console.log(err);
                             $rootScope.userName=response.name;
+                            localStorage.browserUserName=response.name;
+                            $state.go('ionBarStripped.yourTeam');
                         }
 
                         else{
 
                             console.log(data);
                             $rootScope.userName=response.name;
+                            localStorage.browserUserName=response.name;
+                            $state.go('ionBarStripped.yourTeam');
                         }
 
 
@@ -51,21 +55,12 @@ myApp.controller('loginController',function($scope,$state,$http,$rootScope,$face
                 )
                     .error(function(data){
                         $rootScope.userName=response.name;
+                        localStorage.browserUserName=response.name;
+                        $state.go('ionBarStripped.yourTeam');
                     });
 
-                $http.get('http://localhost:8000/api/findGroups')
-                    .success(function(data){
-
-                        if(data){
-                            $rootScope.allGroups=data;
 
 
-                        }
-                        $state.go('ionBarStripped.yourTeam');
-
-                    }
-                );
-                /*  $state.go('ionBarStripped.yourTeam');*/
             },
             function(err) {
                 $scope.welcomeMsg = "Please log in";
