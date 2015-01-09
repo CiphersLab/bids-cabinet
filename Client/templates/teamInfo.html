@@ -4,7 +4,7 @@
 
         <div class="row">
             <div class="col col-10 groupInfoImg">
-               <!-- <img src={{myGroupImage}}/>-->
+                <!-- <img src={{myGroupImage}}/>-->
                 <img ng-src="{{myGroupImage}}"/>
             </div>
             <div class="col col-80">
@@ -59,9 +59,17 @@
 
         <div class="row">
 
-            <div class="col col-40 col-offset-10 teamInfoMember">
-                <p class="">Projects:</p>
+            <div class="col col-10" ng-click="addTeamProject()">
+                <i class="ion-plus-circled" style="font-size: 25px"></i>
             </div>
+
+            <div class="col col-40 teamInfoMember">
+                <p class="">Projects:</p>
+
+
+            </div>
+
+
             <div class="col col-20">
                 <p class="">Bids:</p>
 
@@ -77,10 +85,9 @@
                 Just for checking it is a dummy data-->
 
 
-                <div class="row teamProjects">
+                <div class="row teamProjects" ng-repeat="projects in myGroupProjects">
                     <div class="col col-10 memberList"><p>1</p></div>
-
-                    <span class="col col-80"><p>Javascript API</p></span>
+                    <span class="col col-80"><p>{{projects.elanceProjectName}}</p></span>
                     <span class="col col-10"><p>5</p></span>
 
 
@@ -90,18 +97,6 @@
                     <div class="col col-10 memberListMore"><p>2</p></div>
                     <span class="col col-80"><p>Javascript extension</p></span>
                     <span class="col col-10"><p>10</p></span>
-                </div>
-                <br>
-                <div class="row teamProjects">
-                    <div class="col col-10 memberList"><p>3</p></div>
-                    <span class="col col-80"><p>CMS System</p></span>
-                    <span class="col col-10"><p>15</p></span>
-                </div>
-                <br>
-                <div class="row teamProjectsDark">
-                    <div class="col col-10 memberListMore"><p>4</p></div>
-                    <span class="col col-80"><p>Javascript Long Term Project</p></span>
-                    <span class="col col-10"><p>25</p></span>
                 </div>
                 <br>
 

@@ -32,6 +32,7 @@ app.post('/api/joinGroup',Api.joinGroup);
 app.post('/api/deleteGroup',Api.deleteGroup);
 app.get('/api/findGroupNoImage',Api.findGroupNoImage);
 app.post('/api/findOneGroup',Api.findOneGroup);
+app.post('/api/addGroupProjects',Api.addGroupProjects);
 
 
 

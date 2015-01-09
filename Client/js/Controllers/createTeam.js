@@ -10,7 +10,7 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
 
    //Asad Coding Ends
 
-
+    $scope.addedGroups='';
     $scope.allUsers=[];
 
     $scope.imageModel="";
@@ -93,6 +93,7 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
             groupData:$scope.groupDesc,
             userTitle: $scope.userName,
             addedMembers:$scope.addedMembers,
+            groupProjects:$scope.addedGroups,
             imageData:$scope.imageModel
         })
             .success(function(data){

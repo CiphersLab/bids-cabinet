@@ -4,6 +4,7 @@ var groupSchema=mongoose.Schema({
     groupDescription:String,
     groupOwner:String,
     groupMembers:[String],
+    groupProjects:String,
     imageData:{imageName:String,imagePath:String}
 });
 

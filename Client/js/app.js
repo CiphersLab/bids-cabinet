@@ -137,7 +137,7 @@ myApp.config(function($stateProvider, $urlRouterProvider,$httpProvider,$facebook
             views:{
                 yourTeamTab:{
             templateUrl: "templates/teamInfo.html",
-            controller: 'teamInfoController'
+            controller: 'yourTeamController'
 
                 }
             }

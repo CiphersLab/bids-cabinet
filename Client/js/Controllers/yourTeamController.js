@@ -8,8 +8,12 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
     $scope.myGroupDesc='';
     $scope.myGroupOwner='';
     $scope.myGroupImage='';
+    $scope.projectName='';
+    $scope.projectUrl='';
 
 
+
+    $scope.myGroupProjects=[];
 
     $http.get('http://localhost:8000/api/findGroupNoImage')
         .success(function(data){
@@ -51,6 +55,7 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
                 $scope.myGroupDesc=$scope.groupInfo[0].groupDescription;
                 $scope.myGroupOwner=$scope.groupInfo[0].groupOwner;
                 $scope.myGroupMembers=$scope.groupInfo[0].groupMembers;
+                $scope.myGroupProjects=$scope.groupInfo[0].groupProjects;
                 $scope.myGroupImage=$scope.groupInfo[0].imageData.imagePath;
 
 
@@ -131,6 +136,41 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
         });
     };
 
+    $scope.addTeamProject = function() {
+
+        var alertPopup = $ionicPopup.alert({
+            title: 'Add Project',
+            template: 'Elance Project Name:'+'<br>'+'<input type="text" placeholder="Write Here..." ng-model="ProjectName">'+'<br> '+
+                'Elance Project URL:'+'<br>'+'<input type="text" placeholder="Paste Here..." ng-model="ProjectUrl">'+'<br>',
+            cssClass: 'addTeamProjectClass'
+
+        });
+        alertPopup.then(function(res) {
+            console.log('Project is Added in the Group');
+
+
+            $scope.myGroupProjects.push({elanceProjectName:$scope.projectName,elanceProjectUrl:$scope.projectUrl});
+
+            $http.post('http://localhost:8000/api/addGroupProjects',{groupName:$scope.myGroupTitle,groupProject:$scope.myGroupProjects})
+                .success(function(data){
+
+                    $scope.myGroupProjects=data;
+
+
+
+                })
+                .error(function(data){
+
+
+
+                })
+
+
+
+
+        });
+    };
+
 
     $scope.editGroup=function(){
 
@@ -143,13 +183,15 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
 
     };
 
-    $scope.flashCreateTeam=function(){
+    $scope.emptyCreateTeam=function(){
 
         $rootScope.groupName='';
         $rootScope.groupDesc='';
         $rootScope.addedMembers=[];
 
     }
+
+
 
 
 });
