@@ -345,3 +345,13 @@ font-size: 25px;
     background-color: rgba(234, 237, 245, 0.25);
 
 }
+
+.homeIconClass{
+    font-size: 30px;
+}
+
+.homeIconClass ~ p{
+    display: inline;
+    font-size: 18px;
+}
+

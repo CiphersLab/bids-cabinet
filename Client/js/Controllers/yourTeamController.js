@@ -36,6 +36,8 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
 
         console.log('Modal is called');
 
+
+
         $scope.indexOfGroup=index;
 
         $http.post('http://localhost:8000/api/findOneGroup',{groupName:$scope.indexOfGroup})
@@ -140,6 +142,14 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
 
 
     };
+
+    $scope.flashCreateTeam=function(){
+
+        $rootScope.groupName='';
+        $rootScope.groupDesc='';
+        $rootScope.addedMembers=[];
+
+    }
 
 
 });

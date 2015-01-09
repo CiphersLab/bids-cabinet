@@ -5,7 +5,7 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
 
     $scope.userName=localStorage.browserUserName;
     $scope.memberName='';
-    $rootScope.addedMembers=[];
+   /* $rootScope.addedMembers=[];*/
     $scope.file = null;
 
    //Asad Coding Ends
@@ -80,10 +80,10 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
                 flow.cancel()
             }
         }
-    }
+    };
      //  $scope.groupData = {userID:userData._id,title:'',description:'',picData:'',membersID:[],is_gps:true,is_fb:false,is_twit:false,is_private:false}
-    $scope.groupName="";
-    $scope.groupDesc="";
+   /* $scope.groupName="";
+    $scope.groupDesc="";*/
 
     $scope.createGroup=function(){
 
