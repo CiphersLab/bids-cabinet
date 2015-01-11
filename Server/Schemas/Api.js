@@ -66,7 +66,7 @@ module.exports.addGroup=function(req,res){
                         groupDescription:group_info.groupData,
                         groupOwner:group_info.userTitle,
                         groupMembers:group_info.addedMembers,
-                        groupProjects:group_info.groupProjects,
+                        groupProjects:[{projectName:group_info.groupProjectName,projectUrl:group_info.groupProjectUrl}],
                         imageData:{imageName:"",imagePath:group_info.imageData}
 
                     });
@@ -120,8 +120,9 @@ console.log(group_info.groupName);
 module.exports.addGroupProjects=function(req,res){
 
     var group_info=req.body;
-    Groups.update({groupTitle:req.body.groupName},{$push:{'groupProjects':req.body.groupProject}},false,true);
+    Groups.update({groupTitle:req.body.groupName},{$push:{'groupProjects':{'projectName':group_info.groupProjectName,'projectUrl':group_info.groupProjectUrl}}},false,true);
     Groups.findOne({groupTitle:req.body.groupName},function(err,data){
+
         if(err)
             res.send(err);
         else

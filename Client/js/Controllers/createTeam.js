@@ -5,12 +5,13 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
 
     $scope.userName=localStorage.browserUserName;
     $scope.memberName='';
-   /* $rootScope.addedMembers=[];*/
+    /* $rootScope.addedMembers=[];*/
     $scope.file = null;
 
-   //Asad Coding Ends
+    //Asad Coding Ends
 
-    $scope.addedGroups='';
+    $scope.addedProjectsName='';
+    $scope.addedProjectsUrl='';
     $scope.allUsers=[];
 
     $scope.imageModel="";
@@ -21,11 +22,11 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
 
             $scope.allUsers=data;
 
-                    //Here logic is written to prevent owner name in the add Team User List in 'Create your Team Tab'
+            //Here logic is written to prevent owner name in the add Team User List in 'Create your Team Tab'
 
-                    for(var i=0;i<$scope.allUsers.length;i++)
-                    {
-                        if($scope.allUsers[i].fb_title==$scope.userName){
+            for(var i=0;i<$scope.allUsers.length;i++)
+            {
+                if($scope.allUsers[i].fb_title==$scope.userName){
 
                     $scope.allUsers.splice(i,1);
 
@@ -57,7 +58,7 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
 
         fileReader.onloadend = function() {
 
-          $scope.imageModel = fileReader.result;
+            $scope.imageModel = fileReader.result;
 
         }
 
@@ -81,9 +82,9 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
             }
         }
     };
-     //  $scope.groupData = {userID:userData._id,title:'',description:'',picData:'',membersID:[],is_gps:true,is_fb:false,is_twit:false,is_private:false}
-   /* $scope.groupName="";
-    $scope.groupDesc="";*/
+    //  $scope.groupData = {userID:userData._id,title:'',description:'',picData:'',membersID:[],is_gps:true,is_fb:false,is_twit:false,is_private:false}
+    /* $scope.groupName="";
+     $scope.groupDesc="";*/
 
     $scope.createGroup=function(){
 
@@ -93,7 +94,8 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
             groupData:$scope.groupDesc,
             userTitle: $scope.userName,
             addedMembers:$scope.addedMembers,
-            groupProjects:$scope.addedGroups,
+            groupProjectName:$scope.addedProjectsName,
+            groupProjectUrl:$scope.addedProjectsUrl,
             imageData:$scope.imageModel
         })
             .success(function(data){

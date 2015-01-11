@@ -8,12 +8,11 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
     $scope.myGroupDesc='';
     $scope.myGroupOwner='';
     $scope.myGroupImage='';
-    $scope.projectName='';
+
+
     $scope.projectUrl='';
-
-
-
     $scope.myGroupProjects=[];
+
 
     $http.get('http://localhost:8000/api/findGroupNoImage')
         .success(function(data){
@@ -62,6 +61,7 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
             });
 
 
+
         $scope.modal.show();
     };
 
@@ -72,6 +72,9 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
     $scope.$on('$destroy', function() {
         $scope.modal.remove()
     });
+
+
+
 
 
     $scope.removeGroup=function(myGroupName){
@@ -138,30 +141,38 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
 
     $scope.addTeamProject = function() {
 
-        var alertPopup = $ionicPopup.alert({
+        $scope.project={};
+
+        var alertPopup = $ionicPopup.show({
             title: 'Add Project',
-            template: 'Elance Project Name:'+'<br>'+'<input type="text" placeholder="Write Here..." ng-model="ProjectName">'+'<br> '+
-                'Elance Project URL:'+'<br>'+'<input type="text" placeholder="Paste Here..." ng-model="ProjectUrl">'+'<br>',
-            cssClass: 'addTeamProjectClass'
+            template: 'Elance Project Name:'+'<br>'+'<input type="text" placeholder="Write Here..." ng-model="project.name">'+'<br> '+
+                'Elance Project URL:'+'<br>'+'<input type="text" placeholder="Paste Here..." ng-model="project.url">'+'<br>',
+            cssClass: 'addTeamProjectClass',
+            scope: $scope,
+            buttons: [{
+                text: '<b>Save</b>',
+                type: 'button-positive',
+                onTap: function()
+                {
+                    return $scope.project;
+                }
+
+            }]
 
         });
         alertPopup.then(function(res) {
             console.log('Project is Added in the Group');
 
-
-            $scope.myGroupProjects.push({elanceProjectName:$scope.projectName,elanceProjectUrl:$scope.projectUrl});
-
-            $http.post('http://localhost:8000/api/addGroupProjects',{groupName:$scope.myGroupTitle,groupProject:$scope.myGroupProjects})
+            $http.post('http://localhost:8000/api/addGroupProjects',{groupName:$scope.indexOfGroup,groupProjectName:$scope.project.name,groupProjectUrl:$scope.project.url})
                 .success(function(data){
 
+
                     $scope.myGroupProjects=data;
-
-
 
                 })
                 .error(function(data){
 
-
+                    console.log('Project is not added');
 
                 })
 
@@ -182,6 +193,8 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
 
 
     };
+
+    //This function will be used to reset the Create Team Page
 
     $scope.emptyCreateTeam=function(){
 
