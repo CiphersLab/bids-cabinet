@@ -56,7 +56,7 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
                 $scope.myGroupMembers=$scope.groupInfo[0].groupMembers;
                 $scope.myGroupProjects=$scope.groupInfo[0].groupProjects;
                 $scope.myGroupImage=$scope.groupInfo[0].imageData.imagePath;
-
+                $scope.myGroupProjects.shift();
 
             });
 

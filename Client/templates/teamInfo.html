@@ -85,20 +85,28 @@
                 Just for checking it is a dummy data-->
 
 
-                <div class="row teamProjects" ng-repeat="projects in myGroupProjects">
-                    <div class="col col-10 memberList"><p>1</p></div>
+                <div ng-repeat="projects in myGroupProjects">
+
+                    <div ng-if="($index%2)==0" class="row teamProjects">
+                    <div class="col col-10 memberList"><p>{{$index+1}}</p></div>
                     <span class="col col-80"><p>{{projects.projectName}}</p></span>
                     <span class="col col-10"><p>5</p></span>
 
+                    </div>
+
+                    <div ng-if="($index%2)!=0" class="row teamProjectsDark" style="margin-top: 20px">
+
+                    <div class="col col-10 memberList"><p>{{$index+1}}</p></div>
+                    <span class="col col-80"><p>{{projects.projectName}}</p></span>
+                    <span class="col col-10"><p>5</p></span>
+
+                    </div>
+
+
+
 
                 </div>
-                <br>
-                <div class="row teamProjectsDark">
-                    <div class="col col-10 memberListMore"><p>2</p></div>
-                    <span class="col col-80"><p>Javascript extension</p></span>
-                    <span class="col col-10"><p>10</p></span>
-                </div>
-                <br>
+
 
 
 
