@@ -32,7 +32,11 @@ myApp.controller('allTeamController', function($rootScope,$scope,$ionicModal, $i
 
     $scope.openModal = function(index) {
 
+
         console.log('Modal is called');
+
+        $scope.removeGroup=false;
+        $scope.editGroup=false;
 
         $scope.indexOfGroup=index;
 

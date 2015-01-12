@@ -1,14 +1,15 @@
 
 myApp.controller('createTeam',function($scope,$http,$rootScope,$state,base64){
 
-    console.log('create team');
+
+
 
     $scope.userName=localStorage.browserUserName;
     $scope.memberName='';
-    /* $rootScope.addedMembers=[];*/
+
     $scope.file = null;
 
-    //Asad Coding Ends
+
 
     $scope.addedProjectsName='';
     $scope.addedProjectsUrl='';

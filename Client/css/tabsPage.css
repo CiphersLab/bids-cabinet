@@ -333,11 +333,13 @@ font-size: 25px;
 .teamProjects{
     border-color: rgba(230, 231, 226, 0.98);
     background-color: rgba(201, 203, 211, 0.49);
+    margin-top: 20px
 
 }
 .teamProjectsDark{
     border-color: rgba(230, 231, 226, 0.98);
     background-color: rgba(102, 103, 107, 0.56);
+    margin-top: 20px
 
 }
 .memberNamesDisplay{

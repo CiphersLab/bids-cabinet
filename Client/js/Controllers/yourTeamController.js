@@ -40,7 +40,6 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
         console.log('Modal is called');
 
 
-
         $scope.indexOfGroup=index;
 
         $http.post('http://localhost:8000/api/findOneGroup',{groupName:$scope.indexOfGroup})
@@ -168,13 +167,16 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
 
 
                     $scope.myGroupProjects=data;
+                    $scope.myGroupProjects.shift();
 
                 })
                 .error(function(data){
 
                     console.log('Project is not added');
 
-                })
+                });
+
+
 
 
 
@@ -188,7 +190,9 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
         $rootScope.groupName=$scope.myGroupTitle;
         $rootScope.groupDesc=$scope.myGroupDesc;
         $rootScope.addedMembers=$scope.myGroupMembers;
+        $rootScope.submitButton='Update';
         $state.go('ionBarStripped.createTeam');
+
         $scope.modal.hide();
 
 
@@ -201,6 +205,7 @@ myApp.controller('yourTeamController', function($state,$rootScope,$scope,$ionicM
         $rootScope.groupName='';
         $rootScope.groupDesc='';
         $rootScope.addedMembers=[];
+        $rootScope.submitButton='Create Team';
 
     }
 

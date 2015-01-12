@@ -21,12 +21,13 @@
     <ion-content>
 
         <div class="row teamInfo">
-            <div class="col col-10" ng-click="removeGroup(myGroupTitle)">
+
+            <div class="col col-10" ng-show="removeGroup" ng-click="removeGroup(myGroupTitle)">
 
                 <i class="ion-trash-a"></i>
             </div>
 
-            <div class="col col-10" ng-click="editGroup()">
+            <div class="col col-10" ng-show="editGroup" ng-click="editGroup()">
 
                 <i class="ion-edit"></i>
             </div>
@@ -35,9 +36,6 @@
 
                 <i class="ion-person-stalker"></i>
             </div>
-
-
-
 
         </div>
 
@@ -94,7 +92,7 @@
 
                     </div>
 
-                    <div ng-if="($index%2)!=0" class="row teamProjectsDark" style="margin-top: 20px">
+                    <div ng-if="($index%2)!=0" class="row teamProjectsDark">
 
                     <div class="col col-10 memberList"><p>{{$index+1}}</p></div>
                     <span class="col col-80"><p>{{projects.projectName}}</p></span>
